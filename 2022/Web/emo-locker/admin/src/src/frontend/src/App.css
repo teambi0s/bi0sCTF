@@ -1,0 +1,35 @@
+body {
+  font-family: 'Silkscreen', cursive !important;
+}
+
+.App {
+  padding: 0;
+  margin: 0;
+}
+
+.btn {
+  margin-left: 10px;
+}
+
+span[role="img"] {
+  margin-top: 20px;
+  font-size: 28px;
+  text-align: right;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+span[disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.1;
+}
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.row {
+  text-align: center;
+}

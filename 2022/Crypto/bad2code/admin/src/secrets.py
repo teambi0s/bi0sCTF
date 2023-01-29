@@ -1,0 +1,1 @@
+FLAG = "bi0sctf{lcg_is_good_until_you_break_them_!!}"

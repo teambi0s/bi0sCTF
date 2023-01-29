@@ -1,0 +1,14 @@
+service ctf
+{
+    socket_type = stream
+    protocol = tcp
+    port = 1337
+    wait = no
+    user = root
+    type = UNLISTED
+    server = /usr/bin/sage
+    server_args = chall.sage
+    banner_fail = /etc/banner_fail
+    per_source = 10
+    rlimit_cpu = 20
+}
