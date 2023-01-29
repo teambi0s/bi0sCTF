@@ -33,6 +33,9 @@ flag format: bi0s{}
 + The `e5` is then checked if it is equal to 0
 + After determining `enc`, you can use SM4 CBC decryption to extract the key and IV from binary. 
 
+### Hint
+
+The result of every subtraction operation should be 0.
 
 ### Flag
 

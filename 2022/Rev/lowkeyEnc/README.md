@@ -5,7 +5,7 @@ Welcome to the Reversing Conundrum! This is a challenge that will test your skil
 ## Challenge File:
 [Primary Link](https://gitlab.com/teambi0s/bi0sctf/2022/rev/lowkeyEnc/-/blob/main/Handout/lowkeyEnc)
 
-**MD5 Hash** : eef2148cf5c0680af160f3bb8155b8cb
+**MD5 Hash** : f0a011958ceedf45e6de432d222173e5
 
 ## Short Writeup:
 This code is a combination of AES encryption in CBC mode and XOR encryption. The CBC256 struct holds the key and initialization vector (IV) for AES encryption. The EncryptByCBC() function encrypts the plaintext using AES in CBC mode by creating a new cipher block using the key, padding the plaintext using PKCS7, creating a new cipher block mode using the cipher block and IV, and encrypting the padded plaintext using the cipher block mode. The PadByPkcs7() function pads the plaintext using PKCS7 padding scheme. The parallel_encrypt() function encrypts the plaintext using AES in CBC mode in parallel. The xor_encrypt() function encrypts the data using XOR encryption by creating a new slice of bytes with the length of the plaintext, XORing each letter with a multiple of its ASCII value, and returning the encrypted data. The byteArrayToImage() function converts a byte array to an image by creating a small white image, filling it with white, and appending the data to the image at the last row.
