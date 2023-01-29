@@ -1,0 +1,84 @@
+diff --git a/Source/JavaScriptCore/b3/B3ReduceStrength.cpp b/Source/JavaScriptCore/b3/B3ReduceStrength.cpp
+index f9390ccc05..aed7a77b01 100644
+--- a/Source/JavaScriptCore/b3/B3ReduceStrength.cpp
++++ b/Source/JavaScriptCore/b3/B3ReduceStrength.cpp
+@@ -127,7 +127,7 @@ public:
+             return top<T>();
+         if (mask < 0)
+             return IntRange(INT_MIN & mask, mask & INT_MAX);
+-        return IntRange(0, mask);
++        return IntRange(1, mask);
+     }
+ 
+     static IntRange rangeForMask(int64_t mask, Type type)
+diff --git a/Source/JavaScriptCore/jsc.cpp b/Source/JavaScriptCore/jsc.cpp
+index d37aedf6bc..7a3e11bde1 100644
+--- a/Source/JavaScriptCore/jsc.cpp
++++ b/Source/JavaScriptCore/jsc.cpp
+@@ -288,7 +288,7 @@ static JSC_DECLARE_HOST_FUNCTION(functionUseBigInt32);
+ static JSC_DECLARE_HOST_FUNCTION(functionIsBigInt32);
+ static JSC_DECLARE_HOST_FUNCTION(functionIsHeapBigInt);
+ static JSC_DECLARE_HOST_FUNCTION(functionCreateNonRopeNonAtomString);
+-
++static JSC_DECLARE_HOST_FUNCTION(functionBrk);
+ static JSC_DECLARE_HOST_FUNCTION(functionPrintStdOut);
+ static JSC_DECLARE_HOST_FUNCTION(functionPrintStdErr);
+ static JSC_DECLARE_HOST_FUNCTION(functionPrettyPrint);
+@@ -545,6 +545,7 @@ private:
+         addFunction(vm, "debug"_s, functionDebug, 1);
+         addFunction(vm, "describe"_s, functionDescribe, 1);
+         addFunction(vm, "describeArray"_s, functionDescribeArray, 1);
++        addFunction(vm, "brk"_s, functionBrk, 0);
+         addFunction(vm, "print"_s, functionPrintStdOut, 1);
+         addFunction(vm, "printErr"_s, functionPrintStdErr, 1);
+         addFunction(vm, "prettyPrint"_s, functionPrettyPrint, 1);
+@@ -1370,6 +1371,12 @@ fail:
+     return JSValue::encode(jsUndefined());
+ }
+ 
++JSC_DEFINE_HOST_FUNCTION(functionBrk, (JSGlobalObject*, CallFrame*))
++{
++    asm("int3");
++    return JSValue::encode(jsUndefined());
++}
++
+ JSC_DEFINE_HOST_FUNCTION(functionPrintStdOut, (JSGlobalObject* globalObject, CallFrame* callFrame))
+ {
+     return printInternal(globalObject, callFrame, stdout, false);
+diff --git a/Source/JavaScriptCore/runtime/ReflectObject.cpp b/Source/JavaScriptCore/runtime/ReflectObject.cpp
+index 3b9b9a0f37..2d8365cb2f 100644
+--- a/Source/JavaScriptCore/runtime/ReflectObject.cpp
++++ b/Source/JavaScriptCore/runtime/ReflectObject.cpp
+@@ -41,6 +41,7 @@ static JSC_DECLARE_HOST_FUNCTION(reflectObjectOwnKeys);
+ static JSC_DECLARE_HOST_FUNCTION(reflectObjectPreventExtensions);
+ static JSC_DECLARE_HOST_FUNCTION(reflectObjectSet);
+ static JSC_DECLARE_HOST_FUNCTION(reflectObjectSetPrototypeOf);
++static JSC_DECLARE_HOST_FUNCTION(reflectObjectStrid);
+ 
+ }
+ 
+@@ -67,6 +68,7 @@ const ClassInfo ReflectObject::s_info = { "Reflect"_s, &Base::s_info, &reflectOb
+     preventExtensions        reflectObjectPreventExtensions        DontEnum|Function 1
+     set                      reflectObjectSet                      DontEnum|Function 3
+     setPrototypeOf           reflectObjectSetPrototypeOf           DontEnum|Function 2
++    strid                    reflectObjectStrid                    DontEnum|Function 1
+ @end
+ */
+ 
+@@ -285,4 +287,16 @@ JSC_DEFINE_HOST_FUNCTION(reflectObjectSetPrototypeOf, (JSGlobalObject* globalObj
+     return JSValue::encode(jsBoolean(didSetPrototype));
+ }
+ 
++JSC_DEFINE_HOST_FUNCTION(reflectObjectStrid, (JSGlobalObject* globalObject, CallFrame* callFrame))
++{
++    VM& vm = globalObject->vm();
++    auto scope = DECLARE_THROW_SCOPE(vm);
++
++    JSValue target = callFrame->argument(0);
++    if (!target.isObject())
++        return JSValue::encode(throwTypeError(globalObject, scope, "Reflect.strid requires the first argument be an object"_s));
++    JSObject* targetObject = asObject(target);
++    RELEASE_AND_RETURN(scope, JSValue::encode(jsNumber(targetObject->structureID().bits())));
++}
++
+ } // namespace JSC

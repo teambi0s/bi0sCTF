@@ -1,0 +1,144 @@
+diff --git a/Source/JavaScriptCore/b3/B3ReduceStrength.cpp b/Source/JavaScriptCore/b3/B3ReduceStrength.cpp
+index f9390ccc0598..aed7a77b01c5 100644
+--- a/Source/JavaScriptCore/b3/B3ReduceStrength.cpp
++++ b/Source/JavaScriptCore/b3/B3ReduceStrength.cpp
+@@ -127,7 +127,7 @@ public:
+             return top<T>();
+         if (mask < 0)
+             return IntRange(INT_MIN & mask, mask & INT_MAX);
+-        return IntRange(0, mask);
++        return IntRange(1, mask);
+     }
+ 
+     static IntRange rangeForMask(int64_t mask, Type type)
+diff --git a/Source/JavaScriptCore/jsc.cpp b/Source/JavaScriptCore/jsc.cpp
+index d37aedf6bce6..5ad5c8fbc734 100644
+--- a/Source/JavaScriptCore/jsc.cpp
++++ b/Source/JavaScriptCore/jsc.cpp
+@@ -275,7 +275,12 @@ private:
+     Deque<String> m_reports;
+ };
+ 
+-
++static JSC_DECLARE_HOST_FUNCTION(functionPrintStdOut);
++static JSC_DECLARE_HOST_FUNCTION(functionCallMasquerader);
++static JSC_DECLARE_HOST_FUNCTION(functionNeverInlineFunction);
++static JSC_DECLARE_HOST_FUNCTION(functionNoDFG);
++static JSC_DECLARE_HOST_FUNCTION(functionNoFTL);
++/*
+ static JSC_DECLARE_HOST_FUNCTION(functionAtob);
+ static JSC_DECLARE_HOST_FUNCTION(functionBtoa);
+ 
+@@ -289,7 +294,6 @@ static JSC_DECLARE_HOST_FUNCTION(functionIsBigInt32);
+ static JSC_DECLARE_HOST_FUNCTION(functionIsHeapBigInt);
+ static JSC_DECLARE_HOST_FUNCTION(functionCreateNonRopeNonAtomString);
+ 
+-static JSC_DECLARE_HOST_FUNCTION(functionPrintStdOut);
+ static JSC_DECLARE_HOST_FUNCTION(functionPrintStdErr);
+ static JSC_DECLARE_HOST_FUNCTION(functionPrettyPrint);
+ static JSC_DECLARE_HOST_FUNCTION(functionDebug);
+@@ -316,9 +320,6 @@ static JSC_DECLARE_HOST_FUNCTION(functionCheckSyntax);
+ static JSC_DECLARE_HOST_FUNCTION(functionOpenFile);
+ static JSC_DECLARE_HOST_FUNCTION(functionReadline);
+ static JSC_DECLARE_HOST_FUNCTION(functionPreciseTime);
+-static JSC_DECLARE_HOST_FUNCTION(functionNeverInlineFunction);
+-static JSC_DECLARE_HOST_FUNCTION(functionNoDFG);
+-static JSC_DECLARE_HOST_FUNCTION(functionNoFTL);
+ static JSC_DECLARE_HOST_FUNCTION(functionNoOSRExitFuzzing);
+ static JSC_DECLARE_HOST_FUNCTION(functionOptimizeNextInvocation);
+ static JSC_DECLARE_HOST_FUNCTION(functionNumberOfDFGCompiles);
+@@ -336,7 +337,6 @@ static JSC_DECLARE_HOST_FUNCTION(functionIsPureNaN);
+ static JSC_DECLARE_HOST_FUNCTION(functionEffectful42);
+ static JSC_DECLARE_HOST_FUNCTION(functionIdentity);
+ static JSC_DECLARE_HOST_FUNCTION(functionMakeMasquerader);
+-static JSC_DECLARE_HOST_FUNCTION(functionCallMasquerader);
+ static JSC_DECLARE_HOST_FUNCTION(functionHasCustomProperties);
+ static JSC_DECLARE_HOST_FUNCTION(functionDumpTypesForAllVariables);
+ static JSC_DECLARE_HOST_FUNCTION(functionDrainMicrotasks);
+@@ -400,6 +400,7 @@ static JSC_DECLARE_HOST_FUNCTION(functionSetUnhandledRejectionCallback);
+ static JSC_DECLARE_HOST_FUNCTION(functionAsDoubleNumber);
+ 
+ static JSC_DECLARE_HOST_FUNCTION(functionDropAllLocks);
++*/
+ 
+ struct Script {
+     enum class StrictMode {
+@@ -535,17 +536,21 @@ private:
+ 
+     static constexpr unsigned DontEnum = 0 | PropertyAttribute::DontEnum;
+ 
+-    void finishCreation(VM& vm, const Vector<String>& arguments)
++    void finishCreation(VM& vm, const Vector<String>&)
+     {
+         Base::finishCreation(vm);
+         JSC_TO_STRING_TAG_WITHOUT_TRANSITION();
+ 
++        addFunction(vm, "print"_s, functionPrintStdOut, 1);
++        addFunction(vm, "noInline"_s, functionNeverInlineFunction, 1);
++        addFunction(vm, "noDFG"_s, functionNoDFG, 1);
++        addFunction(vm, "noFTL"_s, functionNoFTL, 1);
++        /*
+         addFunction(vm, "atob"_s, functionAtob, 1);
+         addFunction(vm, "btoa"_s, functionBtoa, 1);
+         addFunction(vm, "debug"_s, functionDebug, 1);
+         addFunction(vm, "describe"_s, functionDescribe, 1);
+         addFunction(vm, "describeArray"_s, functionDescribeArray, 1);
+-        addFunction(vm, "print"_s, functionPrintStdOut, 1);
+         addFunction(vm, "printErr"_s, functionPrintStdErr, 1);
+         addFunction(vm, "prettyPrint"_s, functionPrettyPrint, 1);
+         addFunction(vm, "quit"_s, functionQuit, 0);
+@@ -573,9 +578,6 @@ private:
+         addFunction(vm, "readline"_s, functionReadline, 0);
+         addFunction(vm, "preciseTime"_s, functionPreciseTime, 0);
+         addFunction(vm, "neverInlineFunction"_s, functionNeverInlineFunction, 1);
+-        addFunction(vm, "noInline"_s, functionNeverInlineFunction, 1);
+-        addFunction(vm, "noDFG"_s, functionNoDFG, 1);
+-        addFunction(vm, "noFTL"_s, functionNoFTL, 1);
+         addFunction(vm, "noOSRExitFuzzing"_s, functionNoOSRExitFuzzing, 1);
+         addFunction(vm, "numberOfDFGCompiles"_s, functionNumberOfDFGCompiles, 1);
+         addFunction(vm, "callerIsBBQOrOMGCompiled"_s, functionCallerIsBBQOrOMGCompiled, 0);
+@@ -708,6 +710,7 @@ private:
+         addFunction(vm, "asDoubleNumber"_s, functionAsDoubleNumber, 1);
+ 
+         addFunction(vm, "dropAllLocks"_s, functionDropAllLocks, 1);
++        */
+ 
+         if (Options::exposeCustomSettersOnGlobalObjectForTesting()) {
+             {
+diff --git a/Source/JavaScriptCore/runtime/ReflectObject.cpp b/Source/JavaScriptCore/runtime/ReflectObject.cpp
+index 3b9b9a0f378e..2d8365cb2f44 100644
+--- a/Source/JavaScriptCore/runtime/ReflectObject.cpp
++++ b/Source/JavaScriptCore/runtime/ReflectObject.cpp
+@@ -41,6 +41,7 @@ static JSC_DECLARE_HOST_FUNCTION(reflectObjectOwnKeys);
+ static JSC_DECLARE_HOST_FUNCTION(reflectObjectPreventExtensions);
+ static JSC_DECLARE_HOST_FUNCTION(reflectObjectSet);
+ static JSC_DECLARE_HOST_FUNCTION(reflectObjectSetPrototypeOf);
++static JSC_DECLARE_HOST_FUNCTION(reflectObjectStrid);
+ 
+ }
+ 
+@@ -67,6 +68,7 @@ const ClassInfo ReflectObject::s_info = { "Reflect"_s, &Base::s_info, &reflectOb
+     preventExtensions        reflectObjectPreventExtensions        DontEnum|Function 1
+     set                      reflectObjectSet                      DontEnum|Function 3
+     setPrototypeOf           reflectObjectSetPrototypeOf           DontEnum|Function 2
++    strid                    reflectObjectStrid                    DontEnum|Function 1
+ @end
+ */
+ 
+@@ -285,4 +287,16 @@ JSC_DEFINE_HOST_FUNCTION(reflectObjectSetPrototypeOf, (JSGlobalObject* globalObj
+     return JSValue::encode(jsBoolean(didSetPrototype));
+ }
+ 
++JSC_DEFINE_HOST_FUNCTION(reflectObjectStrid, (JSGlobalObject* globalObject, CallFrame* callFrame))
++{
++    VM& vm = globalObject->vm();
++    auto scope = DECLARE_THROW_SCOPE(vm);
++
++    JSValue target = callFrame->argument(0);
++    if (!target.isObject())
++        return JSValue::encode(throwTypeError(globalObject, scope, "Reflect.strid requires the first argument be an object"_s));
++    JSObject* targetObject = asObject(target);
++    RELEASE_AND_RETURN(scope, JSValue::encode(jsNumber(targetObject->structureID().bits())));
++}
++
+ } // namespace JSC
