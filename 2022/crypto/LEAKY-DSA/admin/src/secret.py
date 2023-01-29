@@ -1,1 +1,0 @@
-flag = b'3CC_S1gn1nG_1s_SECCY_6675636b'
