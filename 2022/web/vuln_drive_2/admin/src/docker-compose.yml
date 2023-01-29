@@ -24,7 +24,7 @@ services:
   app:
     build: ./app
     environment:
-      - FLAG=fakeflag
+      - FLAG=dfae5409d
     networks:
       - backend
     restart:
