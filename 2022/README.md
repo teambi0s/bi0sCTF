@@ -7,5 +7,5 @@ Challenges from bi0sCTF 2022
 |[Pwn](Pwn/)|4|
 |[Crypto](Crypto/)|4|
 |[Web](Web/)|4|
-|[Reversing](Reversing/)|4|
+|[Reversing](Rev/)|4|
 |[Misc](Misc/)|4|
