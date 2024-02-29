@@ -1,0 +1,15 @@
+def reccur(i): 
+     if(not i):
+         return 1
+     if(i == 1):
+         return  3
+     val_2 = 2 *reccur(i-1)
+     return val_2 + 3* reccur(i-2) 
+     exit() 
+enc_flag = [102,75,163,239,156,158,7,143,92,120,0,54,183,65,199,253,60,182,204] 
+for i in range(20):
+    flag_val = enc_flag[i]
+    ctr_val = reccur((i * i)+1)% 256
+    val = flag_val ^ ctr_val 
+    print( )
+    print(chr(val),end="")      

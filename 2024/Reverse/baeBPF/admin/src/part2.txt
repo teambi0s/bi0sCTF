@@ -1,0 +1,105 @@
+void encrypt_function():
+   0: (bf) r6 = r10
+   1: (07) r6 += -4
+   2: (18) r9 = 0xffffffe0
+   4: (b7) r8 = 0
+; uint32_t v[2] = {0,0};
+   5: (b7) r1 = 0
+   6: (7b) *(u64 *)(r10 -8) = r1
+   7: (63) *(u32 *)(r10 -12) = r8
+; uint32_t *temp = bpf_map_lookup_elem((void *)bpf_pseudo_fd(1, -1), &index);
+   8: (18) r1 = map[id:14]
+  10: (bf) r2 = r10
+  11: (07) r2 += -12
+; uint32_t *temp = bpf_map_lookup_elem((void *)bpf_pseudo_fd(1, -1), &index);
+  12: (07) r1 += 272
+  13: (61) r0 = *(u32 *)(r2 +0)
+  14: (35) if r0 >= 0x400 goto pc+3
+  15: (67) r0 <<= 3
+  16: (0f) r0 += r1
+  17: (05) goto pc+1
+  18: (b7) r0 = 0
+  19: (bf) r7 = r0
+; if (temp != NULL && *temp != 0)
+  20: (15) if r7 == 0x0 goto pc+78
+  21: (61) r1 = *(u32 *)(r7 +0)
+  22: (15) if r1 == 0x0 goto pc+76
+  23: (63) *(u32 *)(r10 -8) = r1
+; uint32_t *temp2 = bpf_map_lookup_elem((void *)bpf_pseudo_fd(1, -2), &index);
+  24: (18) r1 = map[id:13]
+  26: (bf) r2 = r10
+  27: (07) r2 += -12
+; uint32_t *temp2 = bpf_map_lookup_elem((void *)bpf_pseudo_fd(1, -2), &index);
+  28: (07) r1 += 272
+  29: (61) r0 = *(u32 *)(r2 +0)
+  30: (35) if r0 >= 0x400 goto pc+3
+  31: (67) r0 <<= 3
+  32: (0f) r0 += r1
+  33: (05) goto pc+1
+  34: (b7) r0 = 0
+  35: (15) if r0 == 0x0 goto pc+63
+  36: (61) r1 = *(u32 *)(r7 +0)
+  37: (15) if r1 == 0x0 goto pc+61
+  38: (b7) r1 = 32
+  39: (18) r2 = 0x9e3779b9
+  41: (61) r7 = *(u32 *)(r10 -8)
+  42: (61) r4 = *(u32 *)(r0 +0)
+  43: (63) *(u32 *)(r10 -4) = r4
+  44: (bf) r3 = r4
+  45: (67) r3 <<= 4
+  46: (07) r3 += 305402420
+  47: (bf) r5 = r4
+  48: (0f) r5 += r2
+  49: (af) r3 ^= r5
+  50: (bf) r5 = r4
+  51: (5f) r5 &= r9
+  52: (77) r5 >>= 5
+  53: (07) r5 += 305402420
+  54: (af) r3 ^= r5
+  55: (0f) r3 += r7
+  56: (bf) r5 = r3
+  57: (67) r5 <<= 4
+  58: (07) r5 += 305402420
+  59: (bf) r0 = r2
+  60: (0f) r0 += r3
+  61: (af) r5 ^= r0
+  62: (bf) r0 = r3
+  63: (5f) r0 &= r9
+  64: (77) r0 >>= 5
+  65: (07) r0 += 305402420
+  66: (af) r5 ^= r0
+  67: (0f) r5 += r4
+  68: (07) r2 += -1640531527
+  69: (07) r1 += -1
+  70: (bf) r0 = r1
+  71: (67) r0 <<= 32
+  72: (77) r0 >>= 32
+  73: (bf) r4 = r5
+  74: (bf) r7 = r3
+  75: (15) if r0 == 0x0 goto pc+1
+  76: (05) goto pc-33
+  77: (63) *(u32 *)(r10 -4) = r5
+  78: (63) *(u32 *)(r10 -8) = r3
+; bpf_map_update_elem((void *)bpf_pseudo_fd(1, -3), &index,&v[0], BPF_ANY);
+  79: (18) r1 = map[id:12]
+  81: (bf) r7 = r10 
+  82: (07) r7 += -12
+  83: (bf) r3 = r10
+  84: (07) r3 += -8
+; bpf_map_update_elem((void *)bpf_pseudo_fd(1, -3), &index,&v[0], BPF_ANY);
+  85: (bf) r2 = r7
+  86: (b7) r4 = 0
+  87: (85) call array_map_update_elem#296464
+; bpf_map_update_elem((void *)bpf_pseudo_fd(1, -4), &index,&v[1], BPF_ANY);
+  88: (18) r1 = map[id:11]
+; bpf_map_update_elem((void *)bpf_pseudo_fd(1, -4), &index,&v[1], BPF_ANY);
+  90: (bf) r2 = r7
+  91: (bf) r3 = r6
+  92: (b7) r4 = 0
+  93: (85) call array_map_update_elem#296464
+  94: (07) r8 += 1
+  95: (bf) r1 = r8
+  96: (67) r1 <<= 32
+  97: (77) r1 >>= 32
+  98: (55) if r1 != 0x80 goto pc-94
+  99: (95) exit

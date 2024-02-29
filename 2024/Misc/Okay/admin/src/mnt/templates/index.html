@@ -1,0 +1,92 @@
+<html>
+<head>
+    <title>Is it okay?</title>
+</head>
+<body>
+    
+    <form action="/okay" method="post">
+        <h1 id="main_title">Is it okay?&nbsp;</h1>
+        <input name="url" type="text">&nbsp;
+        <input type="submit" value="Submit">
+    </form>
+    <p id="status">{{data}}</p>
+    <footer>
+            <h6 id="foot">
+                Status : Okay <br>
+                Server's Gateway Address :  
+            </h6>
+            <h6>
+                &copy; Is it okay 2024-2025
+            </h6>
+            
+    </footer>
+    <style>
+        #status {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ccc;
+            font-size: 16px;
+        }
+
+        #main_title {   
+            color: #ccc;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #212121;
+            text-align: center;
+            color: #ccc;
+        }
+    
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            font-size: 16px;
+            color: #ccc;
+            background-color: #131313;
+        }
+    
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #131313;
+            color: ccc;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            background-color: #212121;
+        }
+       
+        html {
+            overflow: hidden;
+        }
+
+    </style>
+    <script defer>
+        fetch('http://34.18.13.217:{PORT_VEC}/native')
+        .then(res => res.text())
+        .then(data => document.getElementById('foot').innerText+=data);
+    </script>
+</body>
+</html>

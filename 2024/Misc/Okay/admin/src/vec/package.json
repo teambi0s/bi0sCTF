@@ -1,0 +1,15 @@
+{
+  "name": "vec",
+  "version": "1.0.0",
+  "description": "Get info about your networks",
+  "main": "net.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "4.18.2",
+    "network": "0.6.1"
+  },
+  "author": "Winters",
+  "license": "ISC"
+}

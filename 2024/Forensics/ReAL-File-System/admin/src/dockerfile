@@ -1,0 +1,24 @@
+FROM ubuntu:22.04
+
+RUN apt-get -y update && \
+    apt-get -y upgrade
+
+RUN apt install -y python3.10
+
+RUN useradd -m DFIR
+RUN echo "DFIR:DFIR" | chpasswd
+WORKDIR /home/DFIR
+
+COPY main.py .
+COPY run.sh .
+COPY ynetd .
+COPY files/verify.py .
+COPY files/hidden.py .
+COPY files/flag .
+
+RUN chown -R root:root /home/DFIR
+RUN chmod -R 555 /home/DFIR
+
+USER DFIR
+EXPOSE 1337
+CMD ./ynetd -p 1337 "timeout 150 ./run.sh"

