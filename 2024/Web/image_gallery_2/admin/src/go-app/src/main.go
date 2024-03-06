@@ -75,7 +75,7 @@ func updatejs(sid string){
 
 	base64Data := base64.StdEncoding.EncodeToString(jsonData)
 	uencoded := url.QueryEscape(base64Data)
-	content := fmt.Sprintf("if(top.location.origin=='%s')\nfileNames = JSON.parse(atob(decodeURIComponent('%s'))),\nid = '%s';", apphost ,uencoded, sid)
+	content := fmt.Sprintf("if(top.location.origin==='%s')\nfileNames = JSON.parse(atob(decodeURIComponent('%s'))),\nid = '%s';", apphost ,uencoded, sid)
 	fname := filepath.Join(dirPath,"files.js")
 	file, err := os.Create(fname)
 	if err != nil {
