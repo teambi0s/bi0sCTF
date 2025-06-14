@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  next-chat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - "/tmp/uploads_${NEXT_CHAT_DOMAIN}:/app/uploads"
+      - "/tmp/db_${NEXT_CHAT_DOMAIN}:/app/db"
+    environment:
+      - DATABASE_URL=file:../db/dev.db
+      - NEXT_PUBLIC_APP_URL=http://${NEXT_CHAT_DOMAIN}
+      - NEXTAUTH_URL=http://${NEXT_CHAT_DOMAIN}
+    restart: unless-stopped
+    env_file:
+      - ./.env

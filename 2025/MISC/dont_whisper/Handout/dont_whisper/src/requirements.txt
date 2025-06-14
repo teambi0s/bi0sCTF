@@ -1,0 +1,10 @@
+pydub==0.25.1
+tiktoken==0.8.0
+numba==0.60.0
+numpy<2.0
+tqdm==4.66.5
+python-multipart==0.0.12
+Jinja2==3.1.4
+uvicorn==0.32.0
+fastapi==0.115.3
+

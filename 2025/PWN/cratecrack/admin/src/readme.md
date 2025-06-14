@@ -1,0 +1,1 @@
+docker build -t cratecrack . docker run -d -it --net=host --privileged -v /dev/kvm:/dev/kvm cratecrack

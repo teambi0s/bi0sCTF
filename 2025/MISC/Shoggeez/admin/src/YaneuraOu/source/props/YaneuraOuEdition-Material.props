@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <YaneuraOuTarget>Material</YaneuraOuTarget>
+    <YaneuraOuDir>Material</YaneuraOuDir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutDir>$(OutBaseDir)$(YaneuraOuDir)\</OutDir>
+    <TargetName>$(ProjectName)-$(YaneuraOuTarget)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>YANEURAOU_ENGINE_MATERIAL;EVAL_EXP=999;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="YaneuraOuTarget">
+      <Value>$(YaneuraOuTarget)</Value>
+    </BuildMacro>
+    <BuildMacro Include="YaneuraOuDir">
+      <Value>$(YaneuraOuDir)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

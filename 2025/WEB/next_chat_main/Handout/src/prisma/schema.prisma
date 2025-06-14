@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  image         String?
+  password      String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  onboardingCompleted Boolean @default(false)
+
+  status        UserStatus @default(OFFLINE)
+  lastActive    DateTime   @default(now())
+  role          UserRole   @default(USER)
+  
+  directMessages SentDirectMessage[]
+  conversations1 Conversation[] @relation("MemberOne")
+  conversations2 Conversation[] @relation("MemberTwo")
+  files          File[]
+}
+
+model SentDirectMessage {
+  id        String   @id @default(cuid())
+  content   String
+  fileUrl   String?
+  deleted   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  senderId       String
+  conversationId String
+
+  sender      User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([senderId])
+  @@index([conversationId])
+}
+
+model Conversation {
+  id          String   @id @default(cuid())
+  memberOneId String
+  memberTwoId String
+
+  messages    SentDirectMessage[]
+
+  memberOne   User @relation("MemberOne", fields: [memberOneId], references: [id], onDelete: Cascade)
+  memberTwo   User @relation("MemberTwo", fields: [memberTwoId], references: [id], onDelete: Cascade)
+
+  @@unique([memberOneId, memberTwoId])
+  @@index([memberOneId])
+  @@index([memberTwoId])
+}
+
+model File {
+  id             String   @id @default(cuid())
+  originalName   String
+  secureFilename String
+  mimetype       String
+  size           Int
+  userId         String
+  uploadedAt     DateTime @default(now())
+  
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+  @@index([secureFilename])
+  @@map("files")
+}
+
+enum UserStatus {
+  ONLINE
+  OFFLINE
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}

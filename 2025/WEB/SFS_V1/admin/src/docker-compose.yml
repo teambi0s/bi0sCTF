@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  core:
+    build:
+      context: ./core
+    expose:
+      - "3000"  
+    environment:
+      - PORT=3000
+      - RAILS_ENV=development
+      - ALLOWED_HOSTS=core
+    depends_on:
+      - legacy
+    networks:
+      - core-legacy
+      - core-runner
+
+  legacy:
+    build:
+      context: ./legacy
+    environment:
+      - PORT=3001
+    expose:
+      - "3001"
+    networks:
+      - core-legacy
+
+  runner:
+    build:
+      context: ./runner
+    ports:
+      - "4000:4000"  
+    environment:
+      - PORT=4000
+    networks:
+      - core-runner
+
+networks:
+  core-legacy:
+    driver: bridge
+  core-runner:
+    driver: bridge

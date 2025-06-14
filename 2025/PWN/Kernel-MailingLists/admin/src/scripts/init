@@ -1,0 +1,36 @@
+#!/bin/sh
+
+/bin/busybox --install -s
+
+stty raw -echo
+echo 'root:x:0:0:root:/root:/bin/sh' > /etc/passwd
+echo 'root:x:0:' > /etc/group
+
+chown -R 0:0 /
+chmod 644 /etc/passwd
+chmod 644 /etc/group
+
+adduser ctf --disabled-password -H 2>/dev/null
+
+mount -t sysfs -o nodev,noexec,nosuid sysfs /sys
+mount -t proc -o nodev,noexec,nosuid proc /proc
+mount -t tmpfs -o noexec,nosuid,mode=0755 tmpfs /tmp
+mount -t devtmpfs -o nosuid,mode=0755 udev /dev
+
+echo 1 > /proc/sys/kernel/kptr_restrict
+echo 1 > /proc/sys/kernel/dmesg_restrict
+echo 1 > /proc/sys/kernel/perf_event_paranoid
+
+chmod 400 /proc/kallsyms
+chmod 400 /root
+chown ctf /ctf/exploit
+chmod 777 /ctf/exploit
+
+insmod /root/mailinglist.ko
+
+module_no=`cat /proc/devices | grep mailbox | cut -d" " -f1`
+mknod -m 666 /dev/mailbox c $module_no 0
+
+setsid /bin/cttyhack setuidgid 1000 /bin/sh
+
+poweroff -d 1 -n -f

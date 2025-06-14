@@ -1,0 +1,12 @@
+# Answers
+
+1. DELTA4CHARLIE7-SILVERHAWK_88
+2. Felisaas
+3. 44.73,7.43
+4. AXZ-BL-571
+5. AEROX-MB-KRM-8251
+6. 1560d718c94ea09f1860cd270933fc24
+7. T1071.004
+
+# Flag 
+flag":"bi0sctf{n07_4_g4m3_m0m_17s_f0r3ns1cs_92maj420}

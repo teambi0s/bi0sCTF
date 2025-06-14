@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  core:
+    build:
+      context: ./core
+    ports:
+      - "3000:3000"   
+    environment:
+      - PORT=3000
+    depends_on:
+      - legacy
+
+  legacy:
+    build:
+      context: ./legacy
+    environment:
+      - PORT=3001
+    expose:
+      - "3001"       

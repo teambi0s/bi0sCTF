@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - SFS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body.neon-body {
+      background: linear-gradient(135deg, #0f0c29, #24243e, #302b63);
+      color: white;
+      font-family: 'Arial', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .neon-text {
+      font-size: 2.5rem;
+      font-weight: bold;
+      background: linear-gradient(45deg, #8a2be2, #4b0082, #0000ff);
+      -webkit-background-clip: text;
+      text-shadow: 0 0 5px #8a2be2, 0 0 10px #4b0082, 0 0 15px #0000ff;
+      margin-bottom: 20px;
+    }
+
+    .flash-error {
+      color: red;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .flash-notice {
+      color: green;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: #dcdcdc;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      box-shadow: 0 0 5px #8a2be2, 0 0 10px #4b0082, 0 0 15px #0000ff;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #8a2be2, 0 0 15px #4b0082, 0 0 20px #0000ff;
+    }
+
+    .neon-button {
+      display: inline-block;
+      width: 100%;
+      padding: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ffffff;
+      background: linear-gradient(45deg, #8a2be2, #4b0082, #0000ff);
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      box-shadow: 0 0 5px #8a2be2, 0 0 10px #4b0082, 0 0 15px #0000ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .neon-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #8a2be2, 0 0 15px #4b0082, 0 0 20px #0000ff;
+    }
+  </style>
+</head>
+<body class="neon-body">
+  <div class="container">
+    <h1 class="neon-text">Register a New User</h1>
+
+    <% if flash[:error] %>
+      <p class="flash-error"><%= flash[:error] %></p>
+    <% end %>
+    <% if flash[:notice] %>
+      <p class="flash-notice"><%= flash[:notice] %></p>
+    <% end %>
+
+    <%= form_with url: register_path, method: :post, local: true do |form| %>
+      <div class="form-group">
+        <%= form.label :username, "Username", class: "form-label" %>
+        <%= form.text_field :username, class: "form-input" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :url, "URL", class: "form-label" %>
+        <%= form.text_field :url, class: "form-input" %>
+      </div>
+      <div class="form-group">
+        <%= form.submit "Register", class: "neon-button" %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  next-chat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./uploads:/app/uploads"
+      - "./prisma:/app/prisma"
+    restart: unless-stopped
+    env_file:
+      - ./.env

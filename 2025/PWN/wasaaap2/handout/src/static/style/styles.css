@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@400;700&family=Courier+Prime:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
+:root {
+    --font-family-sans: 'Roboto', Arial, sans-serif;
+    --font-family-serif: 'Merriweather', Georgia, serif;
+    --font-family-monospace: 'Courier Prime', Courier, monospace;
+    --font-family-display: 'Montserrat', sans-serif;
+  
+    --font-size-base: 16px;
+    --font-size-small: 14px;
+    --font-size-large: 18px;
+    --font-size-title: 20px;
+    --font-size-header: 28px;
+  
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+
+    --line-height-base: 1.5;
+    --line-height-tight: 1.3;
+    --line-height-loose: 1.75;
+  
+    --bg-color-primary: #1E1E1E;
+    --bg-color-secondary: #2A2A2A;
+    --bg-color-input: #333333;
+    --bg-color-hover: #3D3D3D;
+  
+    --text-color-primary: #E0E0E0;
+    --text-color-secondary: #B0B0B0;
+    --text-color-muted: #888888;
+  
+    --accent-color: #4A90E2;
+    --accent-color-hover: #7BAAF7;
+    --accent-color-highlight: #56D364;
+  
+    --border-color: #444444;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+  
+    --bubble-color-sent: #3B3B3B;
+    --bubble-color-received: #2F2F2F;
+  }
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+*::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    background-color: var(--bg-color-primary);
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    background-image: url('../assets/textures.png');
+    top: 0;
+    left: 0;
+}
+
+nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+    background-color: var(--bg-color-secondary);
+    z-index: 99;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    padding: 2rem;
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+nav .logo a {
+    text-decoration: none;
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-header);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-color-primary);
+    transition: all 0.25s ease-in-out;
+}
+
+nav .logo img {
+    height: var(--font-size-header);
+    position: relative;
+    transform: translateY(10%);
+    rotate: -5deg;
+}
+
+nav .chat a {
+    text-decoration: none;
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-title);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-color-primary);
+    transition: all 0.25s ease-in-out;
+}
+
+nav .chat a:hover {
+    transition: all 0.25s ease-in-out;
+    color: var(--text-color-secondary);
+}
+
+nav .logo a:hover {
+    transition: all 0.25s ease-in-out;
+    color: var(--text-color-secondary);
+}
+
+.report {
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: var(--accent-color);
+    font-family: var(--font-family-monospace);
+}
+
+.report a {
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+.report a:hover {
+    transition: all 0.25s ease-in-out;
+    text-decoration: underline;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.add-msg {
+    position: fixed;
+    z-index: 99;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.add-msg input {
+    height: 2.5rem;
+    width: 40rem;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    outline: none;
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-small);
+    border: none;
+    background-color: var(--bg-color-input);
+    color: var(--text-color-primary);
+}
+
+.add-msg button {
+    position: absolute;
+    cursor: pointer;
+    right: 1%;
+    height: 2.5rem;
+    background-color: transparent;
+    border: none;
+    width: 3.5rem;
+}
+
+.add-msg button img {
+    height: calc(var(--font-size-header) + 5px);
+}
+
+#chat {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#chat .message:first-child {
+    margin-top: 2rem;
+}
+
+#chat .message:last-child {
+    margin-bottom: 10rem;
+}
+
+#chat .message {
+    font-family: var(--font-family-sans);
+    background-color: var(--accent-color-highlight);
+    right: -70%;
+    position: relative;
+    width: 20rem;
+    min-height: 4rem;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+#chat .bot-message {
+    background-color: var(--accent-color);
+    left: -70%;
+}
+
+#chat span.left {
+    position: absolute;
+    bottom: 2px;
+    left: 15px;
+    font-family: var(--font-family-monospace);
+    font-size: calc(var(--font-size-small) - 2px);
+}
+
+#chat span.right {
+    position: absolute;
+    bottom: 2px;
+    right: 15px;
+    font-family: var(--font-family-monospace);
+    font-size: calc(var(--font-size-small) - 2px);
+}
+
+.customContext {
+    list-style: none;
+    z-index: 99;
+    position: absolute;
+    height: 7rem;
+    width: 10rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--bubble-color-received);
+}
+
+.customContext li {
+    height: 50%;
+    width: 100%;
+    color: var(--text-color-secondary);
+    font-family: var(--font-family-display);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+.customContext li:first-child {
+    border-bottom: 1px solid var(--bg-color-hover);
+}
+
+.customContext li:hover {
+    background-color: var(--bg-color-hover);
+}
+
+.threeDot {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 1rem;
+    font-size: var(--font-size-title);
+    cursor: pointer;
+}
+
+.noMessage {
+    color: var(--text-color-primary);
+    font-size: var(--font-size-large);
+    font-family: var(--font-family-display);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

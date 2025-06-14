@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flavour Rater</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2b2b2b 100%);
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      color: #ffffff;
+    }
+    .glow-text {
+      text-shadow: 0 0 10px rgba(255, 135, 0, 0.7);
+    }
+    .custom-container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 135, 0, 0.3);
+    }
+    .code-block {
+      background: #2d2d2d;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center p-4">
+  <div class="custom-container rounded-2xl shadow-2xl p-8 max-w-2xl w-full">
+    <h1 class="text-4xl font-bold text-orange-500 glow-text text-center mb-6">Flavour Less ;)</h1>
+
+    <% if @sanitized_input.present? %>
+      <p class="font-semibold text-orange-400 mb-2">Sanitized Output:</p>
+      <div class="p-4 bg-gray-900 rounded-lg text-white">
+        <%= raw @sanitized_input %>
+      </div>
+    <% else %>
+      <p class="text-gray-300">No input provided. Please add a query parameter, e.g., <code class="code-block">?input=...</code>.</p>
+    <% end %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,2 @@
+pymodbus==3.9.2
+python-dotenv

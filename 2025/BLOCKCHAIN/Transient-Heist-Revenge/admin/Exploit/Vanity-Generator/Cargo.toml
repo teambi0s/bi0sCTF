@@ -1,0 +1,11 @@
+[package]
+name = "Vanity-Generator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tiny-keccak = { version = "2", features = ["keccak"] }
+rayon = "1"
+hex = "0.4"
+hex-literal = "0.3"
+rand = "0.8"

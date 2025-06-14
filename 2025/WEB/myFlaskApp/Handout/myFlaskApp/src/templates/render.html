@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+    </head>
+    <body>
+        <div class="container">
+           <h1>User Profile</h1>
+            <p id="name">{{ request.args.get('username') }}</p>
+            <p id="bio">{{ request.args.get('bio') |safe }}</p>
+        </div>
+</html>

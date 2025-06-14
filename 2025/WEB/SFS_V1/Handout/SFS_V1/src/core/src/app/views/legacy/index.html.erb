@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legacy Endpoint - SFS</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body.neon-body {
+      background: linear-gradient(135deg, #0f0c29, #24243e, #302b63);
+      color: white;
+      font-family: 'Arial', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      background: linear-gradient(45deg, #8a2be2, #4b0082, #0000ff);
+      -webkit-background-clip: text;
+      text-shadow: 0 0 5px #8a2be2, 0 0 10px #4b0082, 0 0 15px #0000ff;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .flash-error {
+      color: red;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .flash-notice {
+      color: green;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #dcdcdc;
+    }
+
+    .neon-highlight {
+      color: #8a2be2;
+      text-shadow: 0 0 5px #8a2be2, 0 0 10px #4b0082, 0 0 15px #0000ff;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: #dcdcdc;
+      text-shadow: 0 0 3px #ffffff;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      box-shadow: 0 0 5px #8a2be2, 0 0 10px #4b0082, 0 0 15px #0000ff;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #8a2be2, 0 0 15px #4b0082, 0 0 20px #0000ff;
+    }
+
+    .neon-button {
+      display: inline-block;
+      width: 100%;
+      padding: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ffffff;
+      background: linear-gradient(45deg, #8a2be2, #4b0082, #0000ff);
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      box-shadow: 0 0 5px #8a2be2, 0 0 10px #4b0082, 0 0 15px #0000ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .neon-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #8a2be2, 0 0 15px #4b0082, 0 0 20px #0000ff;
+    }
+
+    a {
+      color: #8a2be2;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #4b0082;
+    }
+  </style>
+</head>
+<body class="neon-body">
+  <div class="container">
+    <h1>Legacy Endpoint</h1>
+
+    <% if flash[:error] %>
+      <p class="flash-error"><%= flash[:error] %></p>
+    <% end %>
+    <% if flash[:notice] %>
+      <p class="flash-notice"><%= flash[:notice] %></p>
+    <% end %>
+
+    <% if @user && @user.setting&.file_path %>
+      <p>File uploaded: <span class="neon-highlight"><%= @user.setting.file_path %></span></p>
+      <p>This file will be sent to the legacy system when you submit the form below.</p>
+      <h2>Submit to Legacy System</h2>
+      <%= form_with url: legacy_path, method: :post, local: true do |form| %>
+        <div class="form-group">
+          <%= form.label :string, "Legacy String", class: "form-label" %>
+          <%= form.text_field :string, placeholder: "Enter Base64-encoded string", class: "form-input" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :key, "Legacy Key", class: "form-label" %>
+          <%= form.text_field :key, placeholder: "Enter key", class: "form-input" %>
+        </div>
+        <div class="form-group">
+          <%= form.submit "Submit to Legacy", class: "neon-button" %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No file uploaded. Please upload a file in Settings first.</p>
+    <% end %>
+
+    <p><%= link_to "Back to Settings", settings_path %></p>
+    <p><%= link_to "Validate URL", validate_path %></p>
+    <p><%= link_to "Register", register_path %></p>
+  </div>
+</body>
+</html>

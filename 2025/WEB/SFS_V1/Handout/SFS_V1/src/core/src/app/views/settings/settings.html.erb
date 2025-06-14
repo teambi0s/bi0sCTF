@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Settings - SFS</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body.neon-body {
+      background: linear-gradient(135deg, #0f0c29, #24243e, #302b63);
+      color: white;
+      font-family: 'Arial', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      background: linear-gradient(45deg, #8a2be2, #4b0082, #0000ff);
+      -webkit-background-clip: text;
+      text-shadow: 0 0 5px #8a2be2, 0 0 10px #4b0082, 0 0 15px #0000ff;
+      margin-bottom: 20px;
+    }
+
+    .flash-error {
+      color: red;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .flash-notice {
+      color: green;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: #dcdcdc;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      box-shadow: 0 0 5px #8a2be2, 0 0 10px #4b0082, 0 0 15px #0000ff;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      box-shadow: 0 0 10px #8a2be2, 0 0 15px #4b0082, 0 0 20px #0000ff;
+    }
+
+    .neon-button {
+      display: inline-block;
+      width: 100%;
+      padding: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ffffff;
+      background: linear-gradient(45deg, #8a2be2, #4b0082, #0000ff);
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      box-shadow: 0 0 5px #8a2be2, 0 0 10px #4b0082, 0 0 15px #0000ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .neon-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #8a2be2, 0 0 15px #4b0082, 0 0 20px #0000ff;
+    }
+
+    a {
+      color: #8a2be2;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #4b0082;
+    }
+  </style>
+</head>
+<body class="neon-body">
+  <div class="container">
+    <h1>Update Settings</h1>
+
+    <% if flash[:error] %>
+      <p class="flash-error"><%= flash[:error] %></p>
+    <% end %>
+    <% if flash[:notice] %>
+      <p class="flash-notice"><%= flash[:notice] %></p>
+    <% end %>
+
+    <%= form_with url: settings_path, method: :post, local: true, multipart: true do |form| %>
+      <div class="form-group">
+        <%= form.label :json_data, "Settings JSON", class: "form-label" %>
+        <%= form.text_area :json_data, rows: 5, cols: 50, placeholder: '{ "isolated": true, "random": false, "extension": true }', class: "form-textarea" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :file, "Upload File", class: "form-label" %>
+        <%= form.file_field :file, class: "form-input" %>
+      </div>
+      <div class="form-group">
+        <%= form.submit "Submit", class: "neon-button" %>
+      </div>
+    <% end %>
+
+    <p><%= link_to "Back to Register", register_path %></p>
+  </div>
+</body>
+</html>

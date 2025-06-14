@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net/npm/sweetalert2@11 https://cdn.jsdelivr.net/npm/dompurify@3.2.5/dist/purify.min.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/css2 ;">
+  <title>Wasaap</title>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.5/dist/purify.min.js"></script>
+  <script defer src="./module/module.js"></script>
+  <script defer src="./scripts/main.js"></script>
+  <link rel="stylesheet" href="./style/styles.css">
+  <link rel="shortcut icon" href="./assets/logo.ico" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+  <nav class="nav">
+    <ul>
+      <li class="logo"><img src="./assets/logo.svg" alt="Logo"><a href="/">Wasaap</a></li>
+    </ul>
+    <ul>
+      <li class="chat"><a href="#chat">Chat</a></li>
+    </ul>
+  </nav>
+  <p class="report">Report your Conversation using:<a id="report-url" href="">🔗this URL</a></p>
+  <ul class="customContext">
+    <li class="edit-btn">Edit</li>
+    <li class="delete-btn">Delete</li>
+    <li class="render-btn">Render HTML</li>
+    <li class="text-btn">Render Text</li>
+  </ul>
+  <main class="container">
+    <section id="chat">
+      <div id="chat-messages">
+        <!-- Chat messages will be displayed here -->
+      </div>
+      <form class="add-msg" id="add-msg">
+        <input type="text" id="user-input" name="user-input" autocomplete="off" placeholder="Type your message here..." required>
+        <button type="submit"><img src="./assets/send.svg" alt="Send"></button>
+      </form>
+    </section>
+  </main>
+  <script defer src="./scripts/script.js"></script>
+</body>
+</html>

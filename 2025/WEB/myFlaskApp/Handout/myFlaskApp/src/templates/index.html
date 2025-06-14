@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <title>My Flask App</title>
+</head>
+<body>
+    <h1>Welcome to My App</h1>
+ 
+    {% if session.get('username') %}
+        <p>Hello, {{ session.get('username') }}!</p>
+        <div class="container">
+            <form id="bio-form">
+                <label for="bio-form">bio</label>
+                <input type="text" id="bio" name="bio" required>
+                <br>
+                <button type="submit">Update bio</button>
+            </form>
+        </div>
+        
+    {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Register</a>
+        <p>Please log in to access your profile.</p>
+    {% endif %}
+    
+</body>
+</html>

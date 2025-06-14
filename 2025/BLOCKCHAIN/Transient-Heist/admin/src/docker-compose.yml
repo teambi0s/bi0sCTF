@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  blockchain:
+    build:
+      context: ./blockchain-service-transient-heist
+    container_name: blockchain-service-transient-heist
+    
+  anvil-proxy:
+    build:
+      context: ./anvil-proxy
+    container_name: anvil-proxy
+    ports:
+     - 9000:9000
+    depends_on:
+      - blockchain
+
+  python:
+    build:
+      context: ./python-service-transient-heist
+    container_name: python-service-transient-heist
+    ports:
+      - "8888:8888"
+    depends_on:
+      - blockchain
+    environment:
+      - RPC_URL=http://127.0.0.1:9000

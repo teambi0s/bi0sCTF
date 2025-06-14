@@ -1,0 +1,22 @@
+FROM ubuntu:22.04
+
+RUN apt-get -y update && \
+    apt-get -y upgrade
+
+RUN apt install -y python3.10
+
+RUN useradd -m ctf
+RUN echo "ctf:ctf" | chpasswd
+WORKDIR /home/ctf
+
+COPY ynetd .
+COPY run.sh .
+COPY main.py .
+COPY answers.json .
+
+RUN chown -R root:root /home/ctf
+RUN chmod -R 555 /home/ctf
+
+USER ctf
+EXPOSE 1337
+CMD ./ynetd -p 1337 "timeout 150 ./run.sh"

@@ -1,0 +1,10 @@
+{
+    "name": "chat-app",
+    "version": "1.0.0",
+    "main": "main.js",
+    "dependencies": {
+        "express": "5.0.1",
+        "express-session": "^1.17.3",
+        "puppeteer":"^24.10.0"
+    }
+}

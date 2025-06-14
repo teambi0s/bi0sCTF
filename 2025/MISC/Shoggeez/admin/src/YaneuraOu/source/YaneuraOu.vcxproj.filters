@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル\extra">
+      <UniqueIdentifier>{bfdca085-939e-4c22-831c-b8eab41b4440}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\engine">
+      <UniqueIdentifier>{e9b3e69c-bd87-41b1-947e-68da1be9443a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\engine\user-engine">
+      <UniqueIdentifier>{6cab9abd-d0e7-4497-bbe3-67a203fe5dee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval">
+      <UniqueIdentifier>{74e286a5-5565-4995-9fc2-737328172971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\learn">
+      <UniqueIdentifier>{d7ca69f7-bd83-40ce-89c2-fe2d730b80be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="script">
+      <UniqueIdentifier>{efb5b189-918a-4b2a-ba65-731c674603a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\kppt">
+      <UniqueIdentifier>{9199b172-8762-466b-aab3-debc3741c786}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\kpp_kkpt">
+      <UniqueIdentifier>{da7e0fa7-bf52-4802-ac0e-7b3db259ddf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\nnue">
+      <UniqueIdentifier>{f8a06299-f305-4fab-af37-06d5d05b9690}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\nnue\architectures">
+      <UniqueIdentifier>{f5b056d1-3ff2-456f-b355-2e1bf03c8047}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\nnue\features">
+      <UniqueIdentifier>{834f320f-c9fd-430a-9768-3a781b14b0b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\nnue\layers">
+      <UniqueIdentifier>{4c668a86-42fd-403c-9b17-80360d9c8db9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\nnue\trainer">
+      <UniqueIdentifier>{2891115c-d34a-4fcb-8512-c135a8450793}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\nnue\trainer\features">
+      <UniqueIdentifier>{6e8ef4d1-31b3-42c5-b6a5-a0b811d671bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\engine\yaneuraou-engine">
+      <UniqueIdentifier>{1822c23d-4270-4155-8c9b-ed15821d29ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\material">
+      <UniqueIdentifier>{d0b78132-998b-476e-a0a0-f6ce21c64d28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\book">
+      <UniqueIdentifier>{c21108f2-eb7c-49d0-acc0-a4e607d2bb69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\eval\deep">
+      <UniqueIdentifier>{a7e4fe35-2f25-419f-ab28-a1ec74d5c046}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\engine\dlshogi-engine">
+      <UniqueIdentifier>{4f00a656-e09e-4972-abb3-6341239ea76c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\engine\dlshogi-engine\misc">
+      <UniqueIdentifier>{660660a3-9887-4239-a09c-1e56fc843b62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\mate">
+      <UniqueIdentifier>{ecd5f9f1-13cf-4dd8-b466-6b8b4ad4ad0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\engine\tanuki-mate-engine">
+      <UniqueIdentifier>{4848b7b4-f5f3-4fa3-84f5-a5dd21e63f3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\engine\yaneuraou-mate-engine">
+      <UniqueIdentifier>{83e2b88b-605b-4d0d-9ade-bdfb8d89efdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\testcmd">
+      <UniqueIdentifier>{f54ef520-240b-40a2-be3a-0c6c3df35b0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\engine\yo-cluster">
+      <UniqueIdentifier>{81bfe4ec-70a8-412d-9241-496550d208fa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="evaluate.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="bitboard.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="position.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="search.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="thread.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="misc.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="extra\bitop.h">
+      <Filter>リソース ファイル\extra</Filter>
+    </ClInclude>
+    <ClInclude Include="extra\long_effect.h">
+      <Filter>リソース ファイル\extra</Filter>
+    </ClInclude>
+    <ClInclude Include="tt.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="extra\macros.h">
+      <Filter>リソース ファイル\extra</Filter>
+    </ClInclude>
+    <ClInclude Include="learn\multi_think.h">
+      <Filter>リソース ファイル\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="learn\learn.h">
+      <Filter>リソース ファイル\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="learn\half_float.h">
+      <Filter>リソース ファイル\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="learn\learning_tools.h">
+      <Filter>リソース ファイル\learn</Filter>
+    </ClInclude>
+    <ClInclude Include="extra\key128.h">
+      <Filter>リソース ファイル\extra</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\evaluate_io.h">
+      <Filter>リソース ファイル\eval</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\evaluate_common.h">
+      <Filter>リソース ファイル\eval</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\evalsum.h">
+      <Filter>リソース ファイル\eval</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\kppt\evaluate_kppt.h">
+      <Filter>リソース ファイル\eval\kppt</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\kpp_kkpt\evaluate_kpp_kkpt.h">
+      <Filter>リソース ファイル\eval\kpp_kkpt</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\evaluate_mir_inv_tools.h">
+      <Filter>リソース ファイル\eval</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\evaluate_nnue.h">
+      <Filter>リソース ファイル\eval\nnue</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\evaluate_nnue_learner.h">
+      <Filter>リソース ファイル\eval\nnue</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\nnue_accumulator.h">
+      <Filter>リソース ファイル\eval\nnue</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\nnue_architecture.h">
+      <Filter>リソース ファイル\eval\nnue</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\nnue_common.h">
+      <Filter>リソース ファイル\eval\nnue</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\nnue_feature_transformer.h">
+      <Filter>リソース ファイル\eval\nnue</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\nnue_test_command.h">
+      <Filter>リソース ファイル\eval\nnue</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\features\feature_set.h">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\features\features_common.h">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\features\half_kp.h">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\features\half_relative_kp.h">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\features\index_list.h">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\features\k.h">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\features\p.h">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\layers\affine_transform.h">
+      <Filter>リソース ファイル\eval\nnue\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\layers\affine_transform_sparse_input.h">
+      <Filter>リソース ファイル\eval\nnue\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\layers\clipped_relu.h">
+      <Filter>リソース ファイル\eval\nnue\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\layers\input_slice.h">
+      <Filter>リソース ファイル\eval\nnue\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\layers\simd.h">
+      <Filter>リソース ファイル\eval\nnue\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\layers\sum.h">
+      <Filter>リソース ファイル\eval\nnue\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\trainer\trainer.h">
+      <Filter>リソース ファイル\eval\nnue\trainer</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\trainer\trainer_affine_transform.h">
+      <Filter>リソース ファイル\eval\nnue\trainer</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\trainer\trainer_affine_transform_sparse_input.h">
+      <Filter>リソース ファイル\eval\nnue\trainer</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\trainer\trainer_clipped_relu.h">
+      <Filter>リソース ファイル\eval\nnue\trainer</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\trainer\trainer_feature_transformer.h">
+      <Filter>リソース ファイル\eval\nnue\trainer</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\trainer\trainer_input_slice.h">
+      <Filter>リソース ファイル\eval\nnue\trainer</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\trainer\trainer_sum.h">
+      <Filter>リソース ファイル\eval\nnue\trainer</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\architectures\halfkp_256x2-32-32.h">
+      <Filter>リソース ファイル\eval\nnue\architectures</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\architectures\kp_256x2-32-32.h">
+      <Filter>リソース ファイル\eval\nnue\architectures</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\trainer\features\factorizer.h">
+      <Filter>リソース ファイル\eval\nnue\trainer\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\trainer\features\factorizer_feature_set.h">
+      <Filter>リソース ファイル\eval\nnue\trainer\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\trainer\features\factorizer_half_kp.h">
+      <Filter>リソース ファイル\eval\nnue\trainer\features</Filter>
+    </ClInclude>
+    <ClInclude Include="usi.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="extra\all.h">
+      <Filter>リソース ファイル\extra</Filter>
+    </ClInclude>
+    <ClInclude Include="movepick.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\yaneuraou-engine\yaneuraou-param.h">
+      <Filter>リソース ファイル\engine\yaneuraou-engine</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\evalhash.h">
+      <Filter>リソース ファイル\eval</Filter>
+    </ClInclude>
+    <ClInclude Include="thread_win32_osx.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\features\half_kpe9.h">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\features\pe9.h">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\architectures\halfkpe9_256x2-32-32.h">
+      <Filter>リソース ファイル\eval\nnue\architectures</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\trainer\features\factorizer_half_kpe9.h">
+      <Filter>リソース ファイル\eval\nnue\trainer\features</Filter>
+    </ClInclude>
+    <ClInclude Include="book\apery_book.h">
+      <Filter>リソース ファイル\book</Filter>
+    </ClInclude>
+    <ClInclude Include="book\book.h">
+      <Filter>リソース ファイル\book</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\dlshogi-engine\dlshogi_types.h">
+      <Filter>リソース ファイル\engine\dlshogi-engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\dlshogi-engine\misc\fastmath.h">
+      <Filter>リソース ファイル\engine\dlshogi-engine\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\dlshogi-engine\Node.h">
+      <Filter>リソース ファイル\engine\dlshogi-engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\dlshogi-engine\PrintInfo.h">
+      <Filter>リソース ファイル\engine\dlshogi-engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\dlshogi-engine\UctSearch.h">
+      <Filter>リソース ファイル\engine\dlshogi-engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\dlshogi-engine\dlshogi_searcher.h">
+      <Filter>リソース ファイル\engine\dlshogi-engine</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\deep\nn.h">
+      <Filter>リソース ファイル\eval\deep</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\deep\nn_onnx_runtime.h">
+      <Filter>リソース ファイル\eval\deep</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\deep\nn_tensorrt.h">
+      <Filter>リソース ファイル\eval\deep</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\deep\nn_types.h">
+      <Filter>リソース ファイル\eval\deep</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\deep\unpack.cuh">
+      <Filter>リソース ファイル\eval\deep</Filter>
+    </ClInclude>
+    <ClInclude Include="mate\mate.h">
+      <Filter>リソース ファイル\mate</Filter>
+    </ClInclude>
+    <ClInclude Include="mate\mate_move_picker.h">
+      <Filter>リソース ファイル\mate</Filter>
+    </ClInclude>
+    <ClInclude Include="testcmd\unit_test.h">
+      <Filter>リソース ファイル\testcmd</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\features\half_kp_vm.h">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\architectures\halfkpvm_256x2-32-32.h">
+      <Filter>リソース ファイル\eval\nnue\architectures</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\dlshogi-engine\dlshogi_min.h">
+      <Filter>リソース ファイル\engine\dlshogi-engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\yo-cluster\ProcessNegotiator.h">
+      <Filter>リソース ファイル\engine\yo-cluster</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\yo-cluster\EngineNegotiator.h">
+      <Filter>リソース ファイル\engine\yo-cluster</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\yo-cluster\ClusterCommon.h">
+      <Filter>リソース ファイル\engine\yo-cluster</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\yo-cluster\ClusterStrategy.h">
+      <Filter>リソース ファイル\engine\yo-cluster</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\yo-cluster\ClusterObserver.h">
+      <Filter>リソース ファイル\engine\yo-cluster</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\architectures\halfkp_512x2-16-32.h">
+      <Filter>リソース ファイル\eval\nnue\architectures</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\architectures\halfkp_1024x2-8-32.h">
+      <Filter>リソース ファイル\eval\nnue\architectures</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\dlshogi-engine\PvMateSearch.h">
+      <Filter>リソース ファイル\engine\dlshogi-engine</Filter>
+    </ClInclude>
+    <ClInclude Include="eval\nnue\architectures\halfkp_1024x2-8-64.h">
+      <Filter>リソース ファイル\eval\nnue\architectures</Filter>
+    </ClInclude>
+    <ClInclude Include="memory.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="book\policybook.h">
+      <Filter>リソース ファイル\book</Filter>
+    </ClInclude>
+    <ClInclude Include="numa.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="engine.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="usi_option.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="movegen.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="bitboard.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="position.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="usi.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="thread.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="misc.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="extra\long_effect.cpp">
+      <Filter>リソース ファイル\extra</Filter>
+    </ClCompile>
+    <ClCompile Include="tt.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="extra\bitop.cpp">
+      <Filter>リソース ファイル\extra</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\evaluate_bona_piece.cpp">
+      <Filter>リソース ファイル\eval</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\user-engine\user-search.cpp">
+      <Filter>リソース ファイル\engine\user-engine</Filter>
+    </ClCompile>
+    <ClCompile Include="learn\learner.cpp">
+      <Filter>リソース ファイル\learn</Filter>
+    </ClCompile>
+    <ClCompile Include="extra\sfen_packer.cpp">
+      <Filter>リソース ファイル\extra</Filter>
+    </ClCompile>
+    <ClCompile Include="learn\multi_think.cpp">
+      <Filter>リソース ファイル\learn</Filter>
+    </ClCompile>
+    <ClCompile Include="learn\learning_tools.cpp">
+      <Filter>リソース ファイル\learn</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\evaluate_io.cpp">
+      <Filter>リソース ファイル\eval</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\evaluate.cpp">
+      <Filter>リソース ファイル\eval</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\kppt\evaluate_kppt.cpp">
+      <Filter>リソース ファイル\eval\kppt</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\kpp_kkpt\evaluate_kpp_kkpt.cpp">
+      <Filter>リソース ファイル\eval\kpp_kkpt</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\kpp_kkpt\evaluate_kpp_kkpt_learner.cpp">
+      <Filter>リソース ファイル\eval\kpp_kkpt</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\kppt\evaluate_kppt_learner.cpp">
+      <Filter>リソース ファイル\eval\kppt</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\evaluate_mir_inv_tools.cpp">
+      <Filter>リソース ファイル\eval</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nnue\evaluate_nnue.cpp">
+      <Filter>リソース ファイル\eval\nnue</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nnue\evaluate_nnue_learner.cpp">
+      <Filter>リソース ファイル\eval\nnue</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nnue\nnue_test_command.cpp">
+      <Filter>リソース ファイル\eval\nnue</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nnue\features\half_kp.cpp">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nnue\features\half_relative_kp.cpp">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nnue\features\k.cpp">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nnue\features\p.cpp">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClCompile>
+    <ClCompile Include="types.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="usi_option.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="movepick.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="timeman.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\yaneuraou-engine\yaneuraou-search.cpp">
+      <Filter>リソース ファイル\engine\yaneuraou-engine</Filter>
+    </ClCompile>
+    <ClCompile Include="extra\super_sort.cpp">
+      <Filter>リソース ファイル\extra</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nnue\features\half_kpe9.cpp">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nnue\features\pe9.cpp">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\material\evaluate_material.cpp">
+      <Filter>リソース ファイル\eval\material</Filter>
+    </ClCompile>
+    <ClCompile Include="book\apery_book.cpp">
+      <Filter>リソース ファイル\book</Filter>
+    </ClCompile>
+    <ClCompile Include="book\book.cpp">
+      <Filter>リソース ファイル\book</Filter>
+    </ClCompile>
+    <ClCompile Include="book\makebook2015.cpp">
+      <Filter>リソース ファイル\book</Filter>
+    </ClCompile>
+    <ClCompile Include="book\makebook.cpp">
+      <Filter>リソース ファイル\book</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\dlshogi-engine\Node.cpp">
+      <Filter>リソース ファイル\engine\dlshogi-engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\dlshogi-engine\PrintInfo.cpp">
+      <Filter>リソース ファイル\engine\dlshogi-engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\dlshogi-engine\UctSearch.cpp">
+      <Filter>リソース ファイル\engine\dlshogi-engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\dlshogi-engine\YaneuraOu_dlshogi_bridge.cpp">
+      <Filter>リソース ファイル\engine\dlshogi-engine</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\deep\nn.cpp">
+      <Filter>リソース ファイル\eval\deep</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\deep\nn_onnx_runtime.cpp">
+      <Filter>リソース ファイル\eval\deep</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\deep\nn_tensorrt.cpp">
+      <Filter>リソース ファイル\eval\deep</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\deep\nn_types.cpp">
+      <Filter>リソース ファイル\eval\deep</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\dlshogi-engine\dlshogi_searcher.cpp">
+      <Filter>リソース ファイル\engine\dlshogi-engine</Filter>
+    </ClCompile>
+    <ClCompile Include="mate\mate1ply_with_effect.cpp">
+      <Filter>リソース ファイル\mate</Filter>
+    </ClCompile>
+    <ClCompile Include="mate\mate1ply_without_effect.cpp">
+      <Filter>リソース ファイル\mate</Filter>
+    </ClCompile>
+    <ClCompile Include="mate\mate.cpp">
+      <Filter>リソース ファイル\mate</Filter>
+    </ClCompile>
+    <ClCompile Include="mate\mate_solver.cpp">
+      <Filter>リソース ファイル\mate</Filter>
+    </ClCompile>
+    <ClCompile Include="mate\mate_dfpn.hpp">
+      <Filter>リソース ファイル\mate</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\yaneuraou-mate-engine\yaneuraou-mate-search.cpp">
+      <Filter>リソース ファイル\engine\yaneuraou-mate-engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\tanuki-mate-engine\tanuki-mate-search.cpp">
+      <Filter>リソース ファイル\engine\tanuki-mate-engine</Filter>
+    </ClCompile>
+    <ClCompile Include="testcmd\normal_test_cmd.cpp">
+      <Filter>リソース ファイル\testcmd</Filter>
+    </ClCompile>
+    <ClCompile Include="testcmd\mate_test_cmd.cpp">
+      <Filter>リソース ファイル\testcmd</Filter>
+    </ClCompile>
+    <ClCompile Include="testcmd\benchmark.cpp">
+      <Filter>リソース ファイル\testcmd</Filter>
+    </ClCompile>
+    <ClCompile Include="testcmd\unit_test.cpp">
+      <Filter>リソース ファイル\testcmd</Filter>
+    </ClCompile>
+    <ClCompile Include="eval\nnue\features\half_kp_vm.cpp">
+      <Filter>リソース ファイル\eval\nnue\features</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\yo-cluster\ClusterObserver.cpp">
+      <Filter>リソース ファイル\engine\yo-cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\yo-cluster\ProcessNegotiator.cpp">
+      <Filter>リソース ファイル\engine\yo-cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\yo-cluster\EngineNegotiator.cpp">
+      <Filter>リソース ファイル\engine\yo-cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\yo-cluster\ClusterCommon.cpp">
+      <Filter>リソース ファイル\engine\yo-cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\yo-cluster\ClusterStrategy.cpp">
+      <Filter>リソース ファイル\engine\yo-cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="book\makebook2023.cpp">
+      <Filter>リソース ファイル\book</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\dlshogi-engine\PvMateSearch.cpp">
+      <Filter>リソース ファイル\engine\dlshogi-engine</Filter>
+    </ClCompile>
+    <ClCompile Include="memory.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="engine.cpp">
+      <Filter>リソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="book\policybook.cpp">
+      <Filter>リソース ファイル\book</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\script\readme.txt">
+      <Filter>script</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\script\calc_rating.py">
+      <Filter>script</Filter>
+    </None>
+    <None Include="..\script\analyze_result_log.py">
+      <Filter>script</Filter>
+    </None>
+    <None Include="..\script\engine_invoker1.py">
+      <Filter>script</Filter>
+    </None>
+    <None Include="..\script\analyze_yane_log.py">
+      <Filter>script</Filter>
+    </None>
+    <None Include="..\script\engine_invoker5.py">
+      <Filter>script</Filter>
+    </None>
+    <None Include="Makefile">
+      <Filter>リソース ファイル</Filter>
+    </None>
+    <None Include="packages.config" />
+    <None Include="..\.editorconfig" />
+    <None Include="..\.gitattributes" />
+    <None Include="..\.gitignore" />
+    <None Include="..\script\bench.py">
+      <Filter>script</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="eval\deep\unpack.cu">
+      <Filter>リソース ファイル\eval\deep</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

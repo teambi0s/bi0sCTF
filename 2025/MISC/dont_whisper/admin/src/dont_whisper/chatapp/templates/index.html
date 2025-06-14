@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orb to speak with</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+        <h1>Transmit to the sentient.</h1>
+        <div class="chat-output" id="chat-log">
+            <!-- Messages will be added here dynamically -->
+        </div>
+        <div class="chat-inputs">
+            <form id="text-form" onsubmit="sendMessage(event)">
+                <input type="text" id="user-input" placeholder="Transmit your message..." required>
+                <button type="submit" class="send-button">Send</button>
+            </form>
+            <form id="audio-form" onsubmit="sendAudio(event)">
+                <input type="file" id="audio-input" accept=".mp3, .wav" required>
+                <button type="submit" class="send-audio-button">Send Holo-Recording</button>
+            </form>
+        </div>
+    </div>
+    <script src="/static/chat.js"></script>
+</body>
+</html>
